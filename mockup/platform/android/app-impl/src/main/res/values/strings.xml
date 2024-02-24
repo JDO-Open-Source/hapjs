@@ -6,7 +6,7 @@
 -->
 
 <resources>
-    <string name="app_name">Quick Apps Preview</string>
+    <string name="app_name">Quick Apps Preview(JDO)</string>
     <string name="action_settings">Settings</string>
 
     <string name="btn_launch">Launch</string>

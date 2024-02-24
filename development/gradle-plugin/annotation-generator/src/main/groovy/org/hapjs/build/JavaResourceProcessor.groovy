@@ -15,16 +15,27 @@ import org.hapjs.build.generator.MetaData
 import org.hapjs.build.generator.Widget
 
 class JavaResourceProcessor {
+    // 定义一个名为featureExtensions的MetaData对象，用于存放Feature扩展
     private def featureExtensions = new MetaData<Extension>()
+    // 定义一个名为moduleExtensions的MetaData对象，用于存放Module扩展
     private def moduleExtensions = new MetaData<Extension>()
+    // 定义一个名为widgetExtensions的MetaData对象，用于存放Widget扩展
     private def widgetExtensions = new MetaData<Extension>()
+    // 定义一个名为widgets的MetaData对象，用于存放Widget
     private def widgets = new MetaData<Widget>()
+    // 定义一个名为inheriteds的MetaData对象，用于存放Inherited
     private def inheriteds = new MetaData<Inherited>()
+    // 定义一个名为eventTargets的MetaData对象，用于存放EventTarget
     private def eventTargets = new MetaData<EventTarget>()
+    // 定义一个名为dependencies的MetaData对象，用于存放Dependency
     private def dependencies = new MetaData<Dependency>()
+    // 定义一个ObjectMapper对象，用于解析JSON文件
     private def mapper = new ObjectMapper()
+    // 定义一个名为mergedAssetsDir的File对象，用于存放合并后的资源目录
     private final File mergedAssetsDir
+    // 定义一个名为javaOutputDir的File对象，用于存放Java输出目录
     private final File javaOutputDir
+    // 定义一个名为cardJsonFile的File对象，用于存放card.json文件
     private final File cardJsonFile
 
     JavaResourceProcessor(File mergedAssetsDir, File javaOutputDir, File cardJsonFile) {
@@ -249,7 +260,11 @@ class JavaResourceProcessor {
         }
     }
 
+    /**
+     * 生成Java源代码
+     */
     private void generateJavaSource() {
+        // 创建MetadataGenerator对象，并执行生成操作，传入Feature扩展、Module扩展、Widget扩展、Widget、EventTarget、Dependency、Java输出目录和card.json文件
         def generator = new MetadataGenerator(
                 featureExtensions, moduleExtensions, widgetExtensions, widgets, eventTargets, dependencies, javaOutputDir, cardJsonFile)
         generator.generate()

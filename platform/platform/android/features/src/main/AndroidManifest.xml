@@ -18,23 +18,28 @@
             tools:node="remove" />
         <service
             android:name=".audio.service.AudioService$AudioService0"
-            android:exported="false"
+            android:exported="true"
+            android:enabled="true"
             android:process=":Launcher0" />
         <service
             android:name=".audio.service.AudioService$AudioService1"
-            android:exported="false"
+            android:exported="true"
+            android:enabled="true"
             android:process=":Launcher1" />
         <service
             android:name=".audio.service.AudioService$AudioService2"
-            android:exported="false"
+            android:exported="true"
+            android:enabled="true"
             android:process=":Launcher2" />
         <service
             android:name=".audio.service.AudioService$AudioService3"
-            android:exported="false"
+            android:exported="true"
+            android:enabled="true"
             android:process=":Launcher3" />
         <service
             android:name=".audio.service.AudioService$AudioService4"
-            android:exported="false"
+            android:exported="true"
+            android:enabled="true"
             android:process=":Launcher4" />
 
         <provider

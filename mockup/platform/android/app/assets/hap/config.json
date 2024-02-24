@@ -1,0 +1,16 @@
+{
+  "shouldConfigStatusBar": true,
+  "shouldConfigThemeMode": false,
+  "needCustomScreenCallback": true,
+  "featureBlacklist": [
+    {
+      "name": "system.sensor"
+    }
+  ],
+  "componentBlacklist": [
+    {
+      "name": "camera",
+      "methods": ["takePhoto"]
+    }
+  ]
+}

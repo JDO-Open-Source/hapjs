@@ -65,38 +65,56 @@ class MetadataGenerator {
         this.dependencies = dependencies
         this.javaOutputDir = javaOutputDir
         this.cardJsonFile = cardJsonFile
-
+        // 创建一个新的JCodeModel实例
         codeModel = new JCodeModel()
+        // 创建一个新的类，名为"org.hapjs.bridge.MetaDataSetImpl"
         metaDataSetClass = codeModel._class(
                 PUBLIC | FINAL,
                 "org.hapjs.bridge.MetaDataSetImpl",
                 ClassType.CLASS)
+        // 设置新创建的类继承自"org.hapjs.bridge.MetaDataSet"
         metaDataSetClass._extends(codeModel.directClass('org.hapjs.bridge.MetaDataSet'))
+        //创建一个dummy、unknown JClass，当代码生成需要包含用户指定的类时，此方法很有用，该类可能存在也可能不存在，并且唯一知道的是类名。
         extensionType = codeModel.directClass("org.hapjs.bridge.ExtensionMetaData")
+        // 获取Map<String, ExtensionMetaData>的类型引用
         mapStringType = codeModel.ref(Map.class).narrow(codeModel.ref(String.class), extensionType)
+        // 获取Set<String>的类型引用
         setStringType = codeModel.ref(Set.class).narrow(codeModel.ref(String.class))
+        // 获取Extension.Mode的类型引用
         modeType = codeModel.directClass("org.hapjs.bridge.Extension.Mode")
+        // 获取Extension.Type的类型引用
         typeType = codeModel.directClass("org.hapjs.bridge.Extension.Type")
+        // 获取Extension.Access的类型引用
         accessType = codeModel.directClass("org.hapjs.bridge.Extension.Access")
+        // 获取Extension.Normalize的类型引用
         normalizeType = codeModel.directClass("org.hapjs.bridge.Extension.Normalize")
+        // 获取Extension.Multiple的类型引用
         multipleType = codeModel.directClass("org.hapjs.bridge.Extension.Multiple")
 
+        // 创建一个新的类，名为"org.hapjs.event.EventTargetDataSetImpl"
         eventTargetMetaDataSetClass = codeModel._class(
                 PUBLIC | FINAL,
                 "org.hapjs.event.EventTargetDataSetImpl",
                 ClassType.CLASS)
+        // 设置新创建的类EventTargetDataSetImpl继承自"org.hapjs.event.EventTargetDataSet"
         eventTargetMetaDataSetClass._extends(codeModel.directClass('org.hapjs.event.EventTargetDataSet'))
+        //获取EventTargetMetaData的类型引用
         eventTargetType = codeModel.directClass("org.hapjs.event.EventTargetMetaData")
         listEventTargetType = codeModel.ref(List.class).narrow(eventTargetType)
+        // 获取Map<String, List<EventTargetMetaData>>的类型引用
         mapListEventTargetType = codeModel.ref(Map.class).narrow(codeModel.ref(String.class), listEventTargetType)
-
+        // 创建一个新的类，名为"org.hapjs.bridge.DependencyManagerImpl"
         dependencyManagerClass = codeModel._class(
                 PUBLIC | FINAL,
                 "org.hapjs.bridge.DependencyManagerImpl",
                 ClassType.CLASS)
+        // 设置新创建的DependencyManagerImpl类继承自"org.hapjs.bridge.DependencyManager"
         dependencyManagerClass._extends(codeModel.directClass('org.hapjs.bridge.DependencyManager'))
+        // 获取Dependency的类型引用
         dependencyType = codeModel.directClass("org.hapjs.bridge.DependencyManager.Dependency")
+        // 获取Map<String, Dependency>的类型引用
         mapDependencyType = codeModel.ref(Map.class).narrow(codeModel.ref(String.class), dependencyType)
+        // 初始化卡片黑名单
         initCardBlackList()
     }
 
